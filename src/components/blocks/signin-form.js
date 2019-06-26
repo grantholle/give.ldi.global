@@ -47,7 +47,7 @@ export default class ContactFrom extends React.Component {
                   <label className="block text-xl lg:mr-6" htmlFor="password">Password</label>
                 </div>
                 <div className="w-full lg:flex-1 mb-6">
-                  <input className="w-full" type="password" name="user[password]" id="password" placeholder="password" />
+                  <input className="w-full" type="password" name="user[password]" id="password" />
                 </div>
               </div>
 
