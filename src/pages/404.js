@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -22,13 +21,16 @@ const NotFoundPage = () => (
           Sorry, this page doesn't exist.
         </div>
         <div className="mb-8">
-          <Link className="btn" to="/">Go back home</Link>
+          <a className="btn" href="//ldi.global/">Go back home</a>
         </div>
         <div className="mb-8">
-          <Link className="btn" to="/our-schools">Discover our schools</Link>
+          <a className="btn" href="//ldi.global/our-schools">Discover our schools</a>
         </div>
         <div>
-          <Link className="btn" to="/opportunities">Opportunities</Link>
+          <a className="btn" href="//ldi.global/opportunities">Opportunities</a>
+        </div>
+        <div>
+          <a className="btn" href="//give.ldi.global">Give</a>
         </div>
       </div>
     </section>

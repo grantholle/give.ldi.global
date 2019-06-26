@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import Planes from "../../components/planes"
 
 import BackgroundImage from "gatsby-background-image"
@@ -31,7 +30,7 @@ export default ({ data }) => {
             <div className="text-3xl text-blue-500 mb-4">{data.additionalText}</div>
           }
           {data.buttonLink &&
-            <Link className="btn shadow-md" to={`/${data.buttonLink.pageSlug}`}>{data.buttonText}</Link>
+            <a className="btn shadow-md" href={data.buttonLink}>{data.buttonText}</a>
           }
         </div>
       </div>
