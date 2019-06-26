@@ -33,7 +33,7 @@ export default class ContactFrom extends React.Component {
   render () {
     return (
       <div>
-        <div className="container lg:pt-16">
+        <div className="container">
           <div className="max-w-md mx-auto">
             <p className="text-red-600 font-bold">Example error.</p>
 

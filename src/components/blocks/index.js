@@ -13,6 +13,7 @@ import ImageSep from "./image-separator"
 import Accordion from "./accordion"
 import SignIn from "./signin-form"
 import CreateAccount from "./create-account-form"
+import Donate from "./donate-form"
 
 const blocks = {
   hero: Hero,
@@ -29,6 +30,7 @@ const blocks = {
   accordion: Accordion,
   signin: SignIn,
   create_account: CreateAccount,
+  donate: Donate,
 }
 
 const Blocks = ({ content }) => {

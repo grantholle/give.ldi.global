@@ -49,7 +49,7 @@ export default class ContactFrom extends React.Component {
   render () {
     return (
       <div>
-        <div className="container lg:pt-16">
+        <div className="container">
           <div className="flex flex-wrap">
             <div className="w-full lg:w-3/5 lg:pr-16 mb-10">
               {this.state.error && <p className="text-red-600 font-bold">{this.state.error}</p>}
