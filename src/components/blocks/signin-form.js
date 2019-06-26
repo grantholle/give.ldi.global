@@ -1,6 +1,4 @@
 import React from "react"
-import axios from "axios"
-import { navigate } from "gatsby"
 
 export default class ContactFrom extends React.Component {
   constructor (props) {

@@ -15,12 +15,6 @@ const coords = {
   }
 }
 
-const r = (min, max) => {
-  const i = Math.round(Math.random() * (max - min + 1)) + min
-  console.log(i)
-  return i
-}
-
 export default ({ data }) => {
   return (
     <div className="bg-white">
