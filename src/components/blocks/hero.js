@@ -18,7 +18,9 @@ class Hero extends React.Component {
       BackgroundImage : 'header'
 
     return (
-      <div>
+      <div style={{
+        padding: 0
+      }}>
         <HeaderElement
           Tag="header"
           className={`hero-header ${this.props.data.centerHeadline ? 'has-video' : `pb-20 pt-${this.props.data.backgroundImage ? '128' : '40'}`}`}
