@@ -13,27 +13,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-datocms`,
-      options: {
-        apiToken: `814fe93113d76fc693ad2e6607fad0`,
-      }
-    },
-    {
-      resolve: `gatsby-plugin-facebook-pixel`,
-      options: {
-        pixelId: '234543207218045',
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-tagmanager`,
-      options: {
-        id: `GTM-T9WQLCZ`,
-        // gtmAuth: `YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_AUTH_STRING`,
-        // gtmPreview: `YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_PREVIEW_NAME`,
-        // dataLayerName: `YOUR_DATA_LAYER_NAME`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
