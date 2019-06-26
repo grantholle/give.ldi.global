@@ -7,7 +7,7 @@ import Li from "../images/linked-in.svg"
 import Fb from "../images/fb.svg"
 import Twitter from "../images/twitter.svg"
 
-const Footer = () => (() =>
+const Footer = () => (
   <>
     <section className={`content-block block-button_action`}>
       <Cta data={opps} />
