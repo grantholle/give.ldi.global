@@ -7,7 +7,7 @@ import Blocks from "../components/blocks"
 const SignIn = () => (
   <Layout whiteNav={true}>
     <SEO
-      pageTitle="Sign in"
+      pageTitle="Sign in to Give"
       title="Sign in to give to LDi"
       description=""
       image={null}
@@ -17,7 +17,7 @@ const SignIn = () => (
       {
         id: `hero`,
         block: `hero`,
-        headline: `Sign in`
+        headline: `Sign in to Give`
       },
       {
         id: `signin-form`,
