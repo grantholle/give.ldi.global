@@ -13,7 +13,7 @@ export default class ContactFrom extends React.Component {
   }
 
   async handleSubmit (e) {
-    e.preventDefault()
+    this.setState({ loading: true })
 
     const email = e.target.email.value
     const password = e.target.password.value
@@ -34,30 +34,34 @@ export default class ContactFrom extends React.Component {
             {this.state.error && <p className="text-red-600 font-bold">{this.state.error}</p>}
 
             <form action="/signin" method="post" onSubmit={this.handleSubmit}>
-              <div className="flex flex-wrap">
-                <div className="w-full lg:w-auto mb-6">
-                  <label className="block text-xl lg:mr-6" htmlFor="email">Email or phone</label>
-                </div>
-                <div className="w-full lg:flex-1 mb-6">
-                  <input className="w-full" type="text" name="user[login]" id="email" placeholder="dan@email.com" />
-                </div>
+              <div className="w-full lg:w-auto mb-2">
+                <label className="block" htmlFor="email">Email or phone number</label>
               </div>
-              <div className="flex flex-wrap">
-                <div className="w-full lg:w-auto mb-6">
-                  <label className="block text-xl lg:mr-6" htmlFor="password">Password</label>
-                </div>
-                <div className="w-full lg:flex-1 mb-6">
-                  <input className="w-full" type="password" name="user[password]" id="password" />
-                </div>
+              <div className="w-full lg:flex-1 mb-6">
+                <input autoFocus className="w-full" type="text" name="user[login]" id="email" placeholder="dan@email.com" />
               </div>
 
-              <div className="py-6 flex items-center">
+              <div className="w-full lg:w-auto mb-2">
+                <label className="block" htmlFor="password">Password</label>
+              </div>
+              <div className="w-full lg:flex-1 mb-6">
+                <input className="w-full" type="password" name="user[password]" id="password" />
+              </div>
+
+              <div className="py-4 text-center">
                 <button
                   className="btn"
                   disabled={this.state.loading}
                 >
                   {this.state.loading ? `Signing in...` : `Sign in`}
                 </button>
+
+                <div className="text-sm my-4">
+                  <span className="inline-block mr-2 text-gray-700">Forgot password?</span> <a className="text-blue-500 underline" href="/users/password/new">Reset</a>
+                </div>
+                <div className="text-sm my-4">
+                  <span className="inline-block mr-2 text-gray-700">No account?</span> <a className="text-blue-500 underline" href="/users/password/new">Sign up</a>
+                </div>
               </div>
             </form>
 
