@@ -1,0 +1,11 @@
+.footer-nav-item {
+  @apply px-6 uppercase font-bold;
+}
+
+.footer-nav-item a {
+  @apply text-white;
+}
+
+footer svg {
+  @apply fill-white;
+}

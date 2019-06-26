@@ -1,0 +1,7 @@
+.block-recommendation {
+  @screen xl {
+    .dynamic-padding {
+      padding-right: calc((100vw - 1280px + 4rem) / 2);
+    }
+  }
+}

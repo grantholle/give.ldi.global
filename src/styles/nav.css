@@ -1,0 +1,130 @@
+.header-nav {
+  @apply absolute w-full top-0 z-20;
+
+  svg {
+    @apply fill-blue;
+  }
+}
+
+.header-nav.white-nav svg {
+  @apply fill-white;
+}
+
+.top-nav-wrapper {
+  @apply flex items-center flex-col;
+}
+
+.top-nav-item {
+  @apply px-6 py-2 relative;
+
+  a {
+    @apply block text-white text-sm uppercase font-bold;
+
+    @screen lg {
+      @apply text-blue-500;
+    }
+  }
+}
+
+.menu-inner {
+  @apply relative fixed flex flex-col justify-center h-screen w-full top-0 right-0 shadow-lg;
+  transition: transform 300ms ease;
+  transform: translateX(100%);
+  background: rgba(0, 91, 148, 0.95);
+
+  &.open {
+    transform: translateX(0);
+
+    a {
+      @apply py-1 text-base;
+    }
+
+    .dropdown-anchor {
+      @apply text-gray-500 font-light border-b border-gray-500;
+    }
+  }
+}
+
+.white-nav {
+  .top-nav-item a {
+    @apply text-white;
+  }
+}
+
+.close-button {
+  @apply p-2 w-8 h-8 inline-block absolute;
+  top: 1rem;
+  right: 2rem;
+
+  div {
+    @apply h-1 rounded-full bg-white w-full absolute inset-auto;
+    transform: rotate(45deg);
+
+    &:last-child {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@screen lg {
+  .top-nav-wrapper {
+    @apply flex-row;
+  }
+
+  .white-nav {
+    .top-nav-link {
+      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .dropdown-menu {
+      a {
+        text-shadow: none;
+      }
+    }
+  }
+
+  .top-nav-item {
+    &:hover {
+      .dropdown-menu {
+        transform: translateY(100%);
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &:last-child {
+      @apply -mr-6;
+    }
+  }
+
+  .menu-inner {
+    @apply flex flex-row justify-start relative shadow-none h-auto w-auto bg-transparent;
+    transform: translateX(0);
+
+    .close-button {
+      @apply hidden;
+    }
+  }
+
+  .dropdown-menu {
+    @apply absolute rounded-lg px-6 py-2;
+    background: rgba(0, 91, 148, 0.9);
+    transition: all 300ms cubic-bezier(0.335, 0.010, 0.030, 1.360);
+    left: 0;
+    bottom: 0;
+    transform: translateY(90%);
+    opacity: 0;
+    visibility: hidden;
+    width: 17rem;
+
+    a {
+      @apply text-white py-2;
+      transition: all 300ms cubic-bezier(0.335, 0.010, 0.030, 1.360);
+
+      &:hover {
+        @apply text-blue-300;
+        padding-left: 5px;
+      }
+    }
+  }
+}

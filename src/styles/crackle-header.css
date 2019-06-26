@@ -1,0 +1,15 @@
+.block-crackle_header_plus_content + .content-block > div {
+  @apply pt-0;
+}
+
+.block-crackle_header_plus_content.content-block > div {
+  @apply pb-10;
+
+  @screen md {
+    @apply pb-16;
+  }
+
+  @screen lg {
+    @apply pb-24;
+  }
+}

@@ -1,0 +1,11 @@
+input[type="search"],
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  @apply px-2 py-1 border-b border-gray-500 block w-full;
+  transition: border-color 250ms ease;
+
+  &:focus {
+    @apply outline-none border-blue-500;
+  }
+}

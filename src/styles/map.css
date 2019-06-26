@@ -1,0 +1,123 @@
+.block-map {
+  top: -1px;
+
+  @screen md {
+    @apply pb-12;
+  }
+}
+
+
+.map {
+  fill: #005b94;
+  opacity: .4;
+}
+
+.map-point {
+  fill: #003865;
+}
+
+.map-line {
+  fill: transparent;
+  stroke: #005b94;
+  stroke-width: 2;
+}
+
+.tooltip {
+  @apply text-white leading-tight text-sm bg-blue-500 text-center p-3 shadow rounded mx-auto my-3;
+  z-index: 1;
+
+  @screen sm {
+    @apply absolute my-0;
+    pointer-events: none;
+    z-index: 1;
+    transform: translateX(-50%);
+    width: 12rem;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 0;
+      height: 0;
+      margin-left: -10px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: theme('colors.blue.500') transparent transparent transparent;
+    }
+
+    &.top {
+      &:after {
+        top: -20px;
+        border-color: transparent transparent theme('colors.blue.500') transparent;
+      }
+    }
+  }
+
+  &.us {
+    top: -3%;
+    left: 13%;
+  }
+
+  &.china {
+    top: -1%;
+    left: 70%;
+  }
+
+  &.uae {
+    top: 44%;
+    left: 58%;
+  }
+
+  @screen sm {
+    &.us {
+      top: -3%;
+      left: 13%;
+    }
+
+    &.china {
+      top: -1%;
+      left: 70%;
+    }
+
+    &.uae {
+      top: 44%;
+      left: 58%;
+    }
+  }
+
+  @screen md {
+    &.us {
+      top: 5%;
+    }
+
+    &.china {
+      top: 6%;
+    }
+
+    &.uae {
+      top: 43%;
+    }
+  }
+
+  @screen lg {
+    &.us {
+      top: 8%;
+      left: 14%;
+    }
+
+    &.china {
+      top: 12%;
+    }
+  }
+
+  @screen xl {
+    &.us {
+      top: 13%;
+    }
+
+    &.china {
+      top: 14%;
+    }
+  }
+}

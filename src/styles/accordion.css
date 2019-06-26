@@ -1,0 +1,53 @@
+.content-block.block-accordion > div {
+  @apply py-0 my-4;
+
+  &.add-top-p {
+    @apply pt-12;
+  }
+
+  &.add-bottom-p {
+    @apply pb-12;
+  }
+
+  @screen lg {
+    &.add-top-p {
+      @apply pt-24;
+    }
+
+    &.add-bottom-p {
+      @apply pb-24;
+    }
+  }
+}
+
+.accordion-title {
+  @apply py-4 px-4 font-bold text-xl relative rounded shadow bg-blue-500 text-white flex justify-between items-center cursor-pointer leading-tight;
+
+  @screen lg {
+    @apply text-2xl;
+  }
+}
+
+
+.plus-sign {
+  @apply w-6 h-6 relative;
+
+  .horz, .vert {
+    @apply bg-white absolute rounded inset-0 m-auto;
+  }
+
+  .horz {
+    @apply w-full h-1;
+  }
+
+  .vert {
+    @apply h-full w-1;
+    transition: height 250ms ease;
+  }
+}
+
+.accordion-expanded {
+  .vert {
+    @apply h-1;
+  }
+}

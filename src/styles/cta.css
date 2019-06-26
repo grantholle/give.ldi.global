@@ -1,0 +1,52 @@
+.block-button_action .cta {
+  @apply py-24;
+
+  @screen lg {
+    &.has-airplanes {
+      @apply pt-24 pb-12;
+    }
+  }
+}
+
+/* .has-airplanes {
+  height: 17rem;
+} */
+
+.no-airplanes {
+  height: 22rem;
+}
+
+.plane-left {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.plane-right {
+  width: 65%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+@screen sm {
+  .plane-left {
+    @apply pr-3;
+    margin-left: -10%;
+    width: 60%;
+  }
+
+  .plane-right {
+    @apply pt-4;
+    margin-right: -15%;
+    width: 65%;
+  }
+}
+
+@screen xl {
+  .has-airplanes {
+    height: 23rem;
+  }
+
+  .no-airplanes {
+    height: 27rem;
+  }
+}

@@ -1,0 +1,43 @@
+.block-content_slider {
+  p {
+    @apply mb-0 text-white;
+  }
+
+  h2 {
+    @apply text-white;
+  }
+}
+
+.arrow-container {
+  @apply flex;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1rem;
+  z-index: 20;
+
+  .arrow {
+    @apply mx-2 bg-blue-700 cursor-pointer;
+    width: 4rem;
+    height: 4rem;
+
+    &:before {
+      display: block;
+      height: 40%;
+      width: 40%;
+      margin: 0 auto;
+      content: "";
+      transform: rotate(45deg);
+      border-color: white;
+      border-left-width: 2px;
+      border-bottom-width: 2px;
+      margin-top: 30%;
+      position: relative;
+      left: 10%;
+    }
+  }
+
+  .right-arrow:before {
+    left: -10%;
+    transform: rotate(-135deg);
+  }
+}

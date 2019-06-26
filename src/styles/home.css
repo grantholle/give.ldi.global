@@ -1,0 +1,26 @@
+.homepage {
+  .content-block .content-slider {
+    @apply pt-0;
+  }
+
+  .content-block:nth-child(2) {
+    margin-top: -5rem;
+  }
+
+  .content-block:nth-child(2) > div {
+    clip-path: polygon(72% 0, 100% 5rem, 100% 100%, 0 100%, 0 3.5rem);
+  }
+}
+
+
+@screen lg {
+  .homepage {
+    .content-block:nth-child(2) {
+      margin-top: -7rem;
+    }
+
+    .content-block:nth-child(2) > div {
+      clip-path: polygon(72% 0, 100% 7rem, 100% 100%, 0 100%, 0 5.5rem);
+    }
+  }
+}

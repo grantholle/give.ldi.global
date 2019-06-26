@@ -1,0 +1,28 @@
+@screen lg {
+  .light-triangle {
+    top: -4.5rem;
+    left: -14rem;
+  }
+}
+
+.light-triangle {
+  position: absolute;
+  z-index: 0;
+  top: -5.5rem;
+  left: -10rem;
+}
+
+
+@screen lg {
+  .small-triangle {
+    bottom: -1.5rem;
+    right: -3.5rem;
+  }
+}
+
+.small-triangle {
+  position: absolute;
+  z-index: 0;
+  bottom: -1.5rem;
+  right: -3.5rem;
+}
