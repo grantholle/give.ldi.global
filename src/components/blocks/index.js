@@ -12,6 +12,7 @@ import FullWidthContent from "./full-width-content"
 import ImageSep from "./image-separator"
 import Accordion from "./accordion"
 import SignIn from "./signin-form"
+import CreateAccount from "./create-account-form"
 
 const blocks = {
   hero: Hero,
@@ -27,10 +28,10 @@ const blocks = {
   image_separator: ImageSep,
   accordion: Accordion,
   signin: SignIn,
+  create_account: CreateAccount,
 }
 
 const Blocks = ({ content }) => {
-  console.log(content)
   if (!content) {
     return <div className="py-24">This block not implemented yet.</div>
   }

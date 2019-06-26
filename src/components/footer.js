@@ -22,11 +22,11 @@ const Footer = () => (
             </a>
           </div>
 
-          <div class="flex flex-col md:flex-row md:-mx-6 lg:mx-0 pt-6 lg:pt-0 justify-between items-center text-sm">
-            <div class="top-nav-item"><a class="top-nav-link" href="//ldi.global/how-we-serve">How We Serve</a></div>
-            <div class="top-nav-item"><a class="top-nav-link" href="//ldi.global/our-schools">Discover Our Schools</a></div>
-            <div class="top-nav-item"><a class="top-nav-link" href="//ldi.global/opportunities">Opportunities</a></div>
-            <div class="top-nav-item"><a class="top-nav-link" href="//ldi.global/contact">Contact</a></div>
+          <div className="flex flex-col md:flex-row md:-mx-6 lg:mx-0 pt-6 lg:pt-0 justify-between items-center text-sm">
+            <div className="top-nav-item"><a className="top-nav-link" href="//ldi.global/how-we-serve">How We Serve</a></div>
+            <div className="top-nav-item"><a className="top-nav-link" href="//ldi.global/our-schools">Discover Our Schools</a></div>
+            <div className="top-nav-item"><a className="top-nav-link" href="//ldi.global/opportunities">Opportunities</a></div>
+            <div className="top-nav-item"><a className="top-nav-link" href="//ldi.global/contact">Contact</a></div>
           </div>
         </div>
 

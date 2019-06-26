@@ -31,6 +31,8 @@ export default class ContactFrom extends React.Component {
       <div>
         <div className="container lg:pt-16">
           <div className="max-w-md mx-auto">
+            <p className="text-red-600 font-bold">Example error.</p>
+
             {this.state.error && <p className="text-red-600 font-bold">{this.state.error}</p>}
 
             <form action="/signin" method="post" onSubmit={this.handleSubmit}>

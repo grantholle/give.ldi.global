@@ -51,31 +51,31 @@ class Nav extends React.Component {
                 <div className="h-1 rounded-full"></div>
               </button>
 
-              <div class="top-nav-item">
+              <div className="top-nav-item">
                 <div>
-                  <a href="/#" class="top-nav-link dropdown-anchor">About</a>
-                  <div class="dropdown-menu">
-                    <a class="top-nav-link" href="//ldi.global/how-we-serve">How We Serve</a>
-                    <a class="top-nav-link" href="//ldi.global/training">Training</a>
-                    <a class="top-nav-link" href="//ldi.global/leadership">Leadership</a>
+                  <a href="/#" className="top-nav-link dropdown-anchor">About</a>
+                  <div className="dropdown-menu">
+                    <a className="top-nav-link" href="//ldi.global/how-we-serve">How We Serve</a>
+                    <a className="top-nav-link" href="//ldi.global/training">Training</a>
+                    <a className="top-nav-link" href="//ldi.global/leadership">Leadership</a>
                   </div>
                 </div>
               </div>
-              <div class="top-nav-item">
+              <div className="top-nav-item">
                 <div>
-                  <a href="/#" class="top-nav-link dropdown-anchor">Explore <span class="lowercase">i</span>SC</a>
-                  <div class="dropdown-menu">
-                    <a class="top-nav-link" href="//ldi.global/our-schools">Discover Our Schools</a>
-                    <a class="top-nav-link" href="//ldi.global/philosophy">Philosophy</a>
-                    <a class="top-nav-link" href="//ldi.global/opportunities">Opportunities</a>
+                  <a href="/#" className="top-nav-link dropdown-anchor">Explore <span className="lowercase">i</span>SC</a>
+                  <div className="dropdown-menu">
+                    <a className="top-nav-link" href="//ldi.global/our-schools">Discover Our Schools</a>
+                    <a className="top-nav-link" href="//ldi.global/philosophy">Philosophy</a>
+                    <a className="top-nav-link" href="//ldi.global/opportunities">Opportunities</a>
                   </div>
                 </div>
               </div>
-              <div class="top-nav-item">
-                <a class="top-nav-link" href="//give.ldi.global">Give</a>
+              <div className="top-nav-item">
+                <a className="top-nav-link" href="//give.ldi.global">Give</a>
               </div>
-              <div class="top-nav-item">
-                <a class="top-nav-link" href="//ldi.global/contact">Contact</a>
+              <div className="top-nav-item">
+                <a className="top-nav-link" href="//ldi.global/contact">Contact</a>
               </div>
             </div>
           </div>

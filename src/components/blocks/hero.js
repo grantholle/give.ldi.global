@@ -22,7 +22,7 @@ class Hero extends React.Component {
         padding: 0
       }}>
         <HeaderElement
-          Tag="header"
+          // Tag="header"
           className={`hero-header ${this.props.data.centerHeadline ? 'has-video' : `pb-20 pt-${this.props.data.backgroundImage ? '128' : '40'}`}`}
           fluid={this.props.data.backgroundImage ? this.props.data.backgroundImage.fluid : null}
         >
