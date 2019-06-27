@@ -59,7 +59,7 @@ export default class ContactFrom extends React.Component {
                 </button>
 
                 <div className="text-sm my-4">
-                  <span className="inline-block mr-2 text-gray-700">Forgot password?</span> <a className="text-blue-500 underline" href="/users/password/new">Reset</a>
+                  <span className="inline-block mr-2 text-gray-700">Forgot password?</span> <a className="text-blue-500 underline" href="/users/password/new">Reset it</a>
                 </div>
                 <div className="text-sm my-4">
                   <span className="inline-block mr-2 text-gray-700">No account?</span> <a className="text-blue-500 underline" href="/users/password/new">Sign up</a>
