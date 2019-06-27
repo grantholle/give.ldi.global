@@ -42,7 +42,7 @@ export default class ContactFrom extends React.Component {
       }],
       donations: [{
         key: (new Date()).getMilliseconds(),
-        amount: '10',
+        amount: 10,
         fund_id: 1,
         note: ''
       }],
@@ -143,7 +143,7 @@ export default class ContactFrom extends React.Component {
 
     donations.push({
       key: (new Date()).getMilliseconds(),
-      amount: '',
+      amount: 10,
       fund_id: nextFund ? nextFund.id : this.state.funds[0].id,
       note: ''
     })
@@ -174,38 +174,50 @@ export default class ContactFrom extends React.Component {
                   transitionLeaveTimeout={250}
                 >
                 {this.state.donations.map((donation, index) => (
-                  <div className={index > 0 ? `pt-8` : ``} key={donation.key}>
-                    <div className="mb-2 flex justify-between items-center">
-                      <label htmlFor={`amount_${index}`}>Donation amount (USD)</label>
-                      {index > 0 &&
-                        <button type="button" className="btn text-xs" onClick={() => this.removeFund(index)}>Remove</button>
-                      }
-                    </div>
-                    <div className="mb-10">
-                      <input type="number" name="donations[][amount]" id={`amount_${index}`} min="1.00" step="0.01" value={donation.amount} onChange={e => this.handleDonationChanges(e.target.value, index, 'amount')} />
-                    </div>
-
-                    <div className="mb-2">
-                      <label htmlFor={`fund_${index}`}>Fund</label>
-                    </div>
-                    <div className="mb-10">
-                      <select
-                        value={donation.fund_id}
-                        onChange={e => this.handleDonationChanges(e.target.value, index, 'fund_id')}
-                        id={`fund_${index}`}
-                        name="donations[][fund_id]"
-                      >
-                        {this.state.funds.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
-                      </select>
+                  <div className={`flex flex-wrap -mx-4 ${index > 0 ? `pt-8` : ``}`} key={donation.key}>
+                    <div className="w-1/2 px-4">
+                      <div className="mb-2">
+                        <label htmlFor={`amount_${index}`}>Amount (USD)</label>
+                      </div>
+                      <div className="mb-10">
+                        <input type="number" name="donations[][amount]" id={`amount_${index}`} min="1.00" step="0.01" value={donation.amount} onChange={e => this.handleDonationChanges(e.target.value, index, 'amount')} />
+                      </div>
                     </div>
 
-                    <div className="mb-2">
-                      <label htmlFor={`note_${index}`}>Note</label>
-                    </div>
-                    <div className="mb-8">
-                      <input type="text" name="donations[][note]" id={`note_${index}`} value={donation.note} onChange={e => this.handleDonationChanges(e.target.value, index, 'note')} />
+                    <div className="w-1/2 px-4">
+                      <div className="mb-2">
+                        <label htmlFor={`fund_${index}`}>Fund</label>
+                      </div>
+                      <div className="mb-10">
+                        <select
+                          value={donation.fund_id}
+                          onChange={e => this.handleDonationChanges(e.target.value, index, 'fund_id')}
+                          id={`fund_${index}`}
+                          name="donations[][fund_id]"
+                        >
+                          {this.state.funds.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
+                        </select>
+                      </div>
                     </div>
 
+                    <div className="w-full px-4 mb-8">
+                      <div className="flex justify-between items-end -mx-4">
+                        <div className="flex-1 px-4">
+                          <div className="mb-2">
+                            <label htmlFor={`note_${index}`}>Note</label>
+                          </div>
+                          <div className="">
+                            <input type="text" name="donations[][note]" id={`note_${index}`} value={donation.note} onChange={e => this.handleDonationChanges(e.target.value, index, 'note')} />
+                          </div>
+                        </div>
+
+                        {index > 0 &&
+                          <div className="px-4">
+                            <button type="button" className="btn text-xs" onClick={() => this.removeFund(index)}>Remove</button>
+                          </div>
+                        }
+                      </div>
+                    </div>
                   </div>
                 ))}
                 </ReactCSSTransitionGroup>
@@ -271,7 +283,6 @@ export default class ContactFrom extends React.Component {
 
               <div className="w-full md:w-1/2 px-6">
                 <h3 className="pt-10 md:pt-0">Billing information</h3>
-                <p className="error-message">Example error.</p>
 
                 <div className="mb-2">
                   <label htmlFor="first_name">First name</label>
