@@ -19,7 +19,7 @@ module.exports = {
       extensions: [ `js`, `svg` ],
     },
   ],
-  whitelist: [],
+  whitelist: ['error-message'],
   whitelistPatterns: [
     /body/,
   ], // adjust for each project
