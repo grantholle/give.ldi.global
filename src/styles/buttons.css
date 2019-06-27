@@ -3,7 +3,7 @@ button:focus {
 }
 
 .btn {
-  @apply inline-block rounded-full font-bold uppercase border border-blue-500 text-blue-500 px-10 py-5 text-sm bg-white leading-none shadow text-center;
+  @apply inline-block rounded-full font-bold uppercase border border-blue-500 text-blue-500 px-10 py-5 text-sm bg-white leading-none shadow-md text-center;
   transition: all 250ms ease;
 }
 
@@ -12,7 +12,7 @@ button:focus {
 }
 
 .btn:hover {
-  @apply bg-blue-500 text-white;
+  @apply bg-blue-500 text-white shadow-none;
 }
 
 .btn:disabled {
@@ -25,6 +25,14 @@ button:focus {
 
 .btn.white {
   @apply bg-white text-blue-500 border-white;
+}
+
+.btn.blue {
+  @apply bg-blue-500 text-white;
+}
+
+.btn.text-xs {
+  @apply px-6 py-3 shadow;
 }
 
 @screen lg {
