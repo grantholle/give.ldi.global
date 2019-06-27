@@ -40,5 +40,6 @@ module.exports = {
   ],
   whitelistPatterns: [
     /body/,
+    /block-accordion/,
   ], // adjust for each project
 }
