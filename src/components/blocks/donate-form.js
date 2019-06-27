@@ -1,5 +1,6 @@
 import React from "react"
 // import Required from "../required"
+import ReactCSSTransitionGroup from "react-addons-css-transition-group"
 import { range } from "lodash"
 import DayPicker from "react-day-picker"
 
@@ -24,6 +25,7 @@ export default class ContactFrom extends React.Component {
         name: 'Fund 2'
       }],
       donations: [{
+        key: (new Date()).getMilliseconds(),
         amount: '10',
         fund_id: 1,
         note: ''
@@ -70,6 +72,7 @@ export default class ContactFrom extends React.Component {
   addFund (e) {
     const donations = [...this.state.donations]
     donations.push({
+      key: (new Date()).getMilliseconds(),
       amount: '',
       fund_id: '',
       note: ''
@@ -95,8 +98,13 @@ export default class ContactFrom extends React.Component {
               <div className="w-full md:w-1/2 px-6">
                 <h3 className="pt-10 md:pt-0">Donation information</h3>
 
+                <ReactCSSTransitionGroup
+                  transitionName="fade"
+                  transitionEnterTimeout={250}
+                  transitionLeaveTimeout={250}
+                >
                 {this.state.donations.map((donation, index) => (
-                  <div className={index > 0 ? `pt-8` : ``} key={index}>
+                  <div className={index > 0 ? `pt-8` : ``} key={donation.key}>
                     <div className="mb-2 flex justify-between items-center">
                       <label className="block" htmlFor={`amount_${index}`}>Donation amount (USD)</label>
                       {index > 0 &&
@@ -130,6 +138,7 @@ export default class ContactFrom extends React.Component {
 
                   </div>
                 ))}
+                </ReactCSSTransitionGroup>
 
                 <div className="text-right mb-10">
                   <button onClick={this.addFund} className="btn text-xs" type="button">Give to another fund</button>

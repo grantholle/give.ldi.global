@@ -25,6 +25,7 @@
     "prop-types": "^15.7.2",
     "purgecss-webpack-plugin": "^1.5.0",
     "react": "^16.8.6",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-alice-carousel": "^1.13.11",
     "react-animate-height": "^2.0.9",
     "react-day-picker": "^7.3.0",

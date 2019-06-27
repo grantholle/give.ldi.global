@@ -11,18 +11,14 @@
 @import "../styles/buttons.css";
 @import "../styles/hero.css";
 @import "../styles/images-plus-content.css";
-@import "../styles/content-slider.css";
-@import "../styles/recommendation.css";
 @import "../styles/triangle-content.css";
 @import "../styles/cta.css";
 @import "../styles/image-content-blocks.css";
-@import "../styles/image-carousel.css";
 @import "../styles/input.css";
-@import "../styles/map.css";
 @import "../styles/accordion.css";
 @import "../styles/crackle-header.css";
-@import "../styles/learning-outcomes.css";
 @import "../styles/date-picker.css";
+@import "../styles/animations.css";
 
 
 @import "tailwindcss/utilities";
