@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -26,22 +27,13 @@ const NotFoundPage = () => (
         <div className="mb-8">
           <a className="btn" href="//ldi.global/our-schools">Discover our schools</a>
         </div>
-        <div>
+        <div className="mb-8">
           <a className="btn" href="//ldi.global/opportunities">Opportunities</a>
         </div>
         <div>
-          <a className="btn" href="//give.ldi.global">Give</a>
+          <Link className="btn" to="//signup">Give</Link>
         </div>
       </div>
-    </section>
-
-    <section className={`content-block block-button_action`}>
-      <Cta data={{
-        buttonText: `Send a message`,
-        buttonLink: 'contact',
-        additionalText: `Get in Touch with Us`,
-        addAirplaneGraphic: true
-      }} />
     </section>
   </Layout>
 )
