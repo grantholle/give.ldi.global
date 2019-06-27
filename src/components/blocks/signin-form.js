@@ -38,14 +38,14 @@ export default class ContactFrom extends React.Component {
                 <label htmlFor="email">Email or phone number</label>
               </div>
               <div className="mb-6">
-                <input autoFocus className="w-full" type="text" name="user[login]" id="email" placeholder="dan@email.com" />
+                <input autoFocus type="text" name="user[login]" id="email" placeholder="dan@email.com" />
               </div>
 
               <div className="mb-2">
                 <label htmlFor="password">Password</label>
               </div>
               <div className="mb-6">
-                <input className="w-full" type="password" name="user[password]" id="password" />
+                <input type="password" name="user[password]" id="password" />
               </div>
 
               <div className="py-4 text-center">

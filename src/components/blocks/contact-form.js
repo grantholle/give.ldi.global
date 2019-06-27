@@ -82,7 +82,7 @@ export default class ContactFrom extends React.Component {
                     <label className="block text-xl lg:mr-6" htmlFor="name">What's your name? <span className="text-red-600">*</span></label>
                   </div>
                   <div className="w-full lg:flex-1 mb-6">
-                    <input className="w-full" type="text" name="name" id="name" placeholder="Jane Smith" />
+                    <input type="text" name="name" id="name" placeholder="Jane Smith" />
                   </div>
                 </div>
                 <div className="flex flex-wrap">
@@ -90,7 +90,7 @@ export default class ContactFrom extends React.Component {
                     <label className="block text-xl lg:mr-6" htmlFor="email">What's your email? <span className="text-red-600">*</span></label>
                   </div>
                   <div className="w-full lg:flex-1 mb-6">
-                    <input className="w-full" type="email" name="email" id="email" placeholder="jane@gmail.com" />
+                    <input type="email" name="email" id="email" placeholder="jane@gmail.com" />
                   </div>
                 </div>
                 <div className="flex flex-wrap">
@@ -98,7 +98,7 @@ export default class ContactFrom extends React.Component {
                     <label className="block text-xl lg:mr-6" htmlFor="phone">What's your phone number?</label>
                   </div>
                   <div className="w-full lg:flex-1 mb-6">
-                    <input className="w-full" type="tel" name="phone" id="phone" placeholder="########" />
+                    <input type="tel" name="phone" id="phone" placeholder="########" />
                   </div>
                 </div>
 

@@ -288,28 +288,28 @@ export default class ContactFrom extends React.Component {
                   <label htmlFor="first_name">First name</label>
                 </div>
                 <div className="mb-6">
-                  <input className="w-full" type="text" value={this.state.form.first_name} onChange={e => this.handleFormChanges(e.target.value, 'first_name')} name="billing[first_name]" id="first_name" />
+                  <input type="text" value={this.state.form.first_name} onChange={e => this.handleFormChanges(e.target.value, 'first_name')} name="billing[first_name]" id="first_name" />
                 </div>
 
                 <div className="mb-2">
                   <label htmlFor="last_name">Last name</label>
                 </div>
                 <div className="mb-6">
-                  <input className="w-full" type="text" value={this.state.form.last_name} onChange={e => this.handleFormChanges(e.target.value, 'last_name')} name="billing[last_name]" id="last_name" />
+                  <input type="text" value={this.state.form.last_name} onChange={e => this.handleFormChanges(e.target.value, 'last_name')} name="billing[last_name]" id="last_name" />
                 </div>
 
                 <div className="mb-2">
                   <label htmlFor="street_1">Street</label>
                 </div>
                 <div className="mb-6">
-                  <input className="w-full" type="text" value={this.state.form.street_1} onChange={e => this.handleFormChanges(e.target.value, 'street_1')} name="billing[street_1]" id="street_1" />
+                  <input type="text" value={this.state.form.street_1} onChange={e => this.handleFormChanges(e.target.value, 'street_1')} name="billing[street_1]" id="street_1" />
                 </div>
 
                 <div className="mb-2">
                   <label htmlFor="city">City</label>
                 </div>
                 <div className="mb-6">
-                  <input className="w-full" type="text" value={this.state.form.city} onChange={e => this.handleFormChanges(e.target.value, 'city')} name="billing[city]" id="city" />
+                  <input type="text" value={this.state.form.city} onChange={e => this.handleFormChanges(e.target.value, 'city')} name="billing[city]" id="city" />
                 </div>
 
                 <div className="flex -mx-4">
@@ -381,7 +381,7 @@ export default class ContactFrom extends React.Component {
                       <label htmlFor="postal_code">Postal code</label>
                     </div>
                     <div className="mb-6">
-                      <input className="w-full" type="number" value={this.state.form.postal_code} onChange={e => this.handleFormChanges(e.target.value, 'postal_code')} name="billing[postal_code]" id="postal_code" />
+                      <input type="number" value={this.state.form.postal_code} onChange={e => this.handleFormChanges(e.target.value, 'postal_code')} name="billing[postal_code]" id="postal_code" />
                     </div>
                   </div>
                 </div>

@@ -50,42 +50,42 @@ export default class ContactFrom extends React.Component {
                 <label htmlFor="password">Password <Required /></label>
               </div>
               <div className="mb-6">
-                <input className="w-full" type="password" name="user[password]" id="password" />
+                <input type="password" name="user[password]" id="password" />
               </div>
 
               <div className="mb-2">
                 <label htmlFor="password_confirmation">Confirm password <Required /></label>
               </div>
               <div className="mb-6">
-                <input className="w-full" type="password" name="user[password_confirmation]" id="password_confirmation" />
+                <input type="password" name="user[password_confirmation]" id="password_confirmation" />
               </div>
 
               <div className="mb-2">
                 <label htmlFor="first_name">First name</label>
               </div>
               <div className="mb-6">
-                <input className="w-full" type="text" name="user[first_name]" id="first_name" />
+                <input type="text" name="user[first_name]" id="first_name" />
               </div>
 
               <div className="mb-2">
                 <label htmlFor="last_name">Last name</label>
               </div>
               <div className="mb-6">
-                <input className="w-full" type="text" name="user[last_name]" id="last_name" />
+                <input type="text" name="user[last_name]" id="last_name" />
               </div>
 
               <div className="mb-2">
                 <label htmlFor="street_1">Street</label>
               </div>
               <div className="mb-6">
-                <input className="w-full" type="text" name="user[street_1]" id="street_1" />
+                <input type="text" name="user[street_1]" id="street_1" />
               </div>
 
               <div className="mb-2">
                 <label htmlFor="city">City</label>
               </div>
               <div className="mb-6">
-                <input className="w-full" type="text" name="user[city]" id="city" />
+                <input type="text" name="user[city]" id="city" />
               </div>
 
               <div className="flex -mx-4">
@@ -157,7 +157,7 @@ export default class ContactFrom extends React.Component {
                     <label htmlFor="postal_code">Postal code</label>
                   </div>
                   <div className="mb-6">
-                    <input className="w-full" type="number" name="user[postal_code]" id="postal_code" />
+                    <input type="number" name="user[postal_code]" id="postal_code" />
                   </div>
                 </div>
               </div>
