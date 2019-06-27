@@ -35,7 +35,7 @@ export default class ContactFrom extends React.Component {
 
             <form action="/signin" method="post" onSubmit={this.handleSubmit}>
               <div className="mb-2">
-                <label className="block" htmlFor="email">Email or phone number</label>
+                <label htmlFor="email">Email or phone number</label>
               </div>
               <div className="mb-6">
                 <input autoFocus className="w-full" type="text" name="user[login]" id="email" placeholder="dan@email.com" />
