@@ -35,6 +35,8 @@ module.exports = {
     `lg\:text-2xl`,
     `leading-loose`,
     `md\:px-8`,
+    `add-top-p`,
+    `add-bottom-p`,
   ],
   whitelistPatterns: [
     /body/,
