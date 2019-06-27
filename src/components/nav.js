@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import Logo from "../images/ldi-logo.svg"
 
 class Nav extends React.Component {
@@ -24,9 +23,9 @@ class Nav extends React.Component {
       <nav className={`header-nav ${this.white ? 'white-nav' : ''}`}>
         <div className="container flex justify-between items-center py-8">
           <div className="w-1/2 sm:w-1/3 md:w-64">
-            <Link to="/">
+            <a href="//ldi.global">
               <Logo/>
-            </Link>
+            </a>
           </div>
 
           <div className="top-nav-wrapper">
