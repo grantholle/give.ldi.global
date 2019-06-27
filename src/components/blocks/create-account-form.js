@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import Required from "../required"
 
 export default class ContactFrom extends React.Component {
@@ -35,8 +36,6 @@ export default class ContactFrom extends React.Component {
       <div>
         <div className="container">
           <div className="max-w-md mx-auto">
-            <p className="error-message">Example error.</p>
-
             {this.state.error && <p className="error-message">{this.state.error}</p>}
 
             <form action="/signup" method="post" onSubmit={this.handleSubmit}>
@@ -93,8 +92,8 @@ export default class ContactFrom extends React.Component {
                 <label className="block" htmlFor="state">State</label>
               </div>
               <div className="mb-6">
-                <select id="state" name="user[state]">
-                  <option disabled selected>Select...</option>
+                <select id="state" name="user[state]" defaultValue="">
+                  <option value="" disabled>Select...</option>
                   <option value="AL">AL</option>
                   <option value="AK">AK</option>
                   <option value="AZ">AZ</option>
@@ -166,7 +165,7 @@ export default class ContactFrom extends React.Component {
                 </button>
 
                 <div className="text-sm my-4">
-                  <span className="inline-block mr-2 text-gray-700">Have an account?</span> <a className="text-blue-500 underline" href="/signin">Sign in</a>
+                  <span className="inline-block mr-2 text-gray-700">Have an account?</span> <Link className="text-blue-500 underline" to="/signin">Sign in</Link>
                 </div>
               </div>
             </form>
