@@ -12,11 +12,27 @@ export default class ContactFrom extends React.Component {
 
     this.state = {
       loading: false,
-      method: 'cc',
-      recurrence: 'once',
+      inReview: false,
       years: range(currentYear, currentYear + 8),
       months: range(1, 12),
-      selectedDay: new Date(),
+      form: {
+        first_name: '',
+        last_name: '',
+        street_1: '',
+        city: '',
+        state: '',
+        postal_code: '',
+        payment_method: 'cc',
+        period: 'once',
+        start: new Date(),
+        card_number: '',
+        verification_value: '',
+        expires_month: '',
+        expires_year: '',
+        account_number: '',
+        routing_number: '',
+        recurrence_day: ''
+      },
       funds: [{
         id: 1,
         name: 'Fund 1'
@@ -29,7 +45,39 @@ export default class ContactFrom extends React.Component {
         amount: '10',
         fund_id: 1,
         note: ''
-      }]
+      }],
+      recurrences: [
+        {
+          value: `once`,
+          label: `One-time donation`
+        },
+        {
+          value: `1week`,
+          label: `Weekly donation`
+        },
+        {
+          value: `2weeks`,
+          label: `Bi-weekly donation`
+        },
+        {
+          value: `month`,
+          label: `Monthly donation`
+        },
+        {
+          value: `semi`,
+          label: `Semi-monthly donation`
+        }
+      ],
+      methods: [
+        {
+          value: `cc`,
+          label: `Credit or debit card`
+        },
+        {
+          value: `account`,
+          label: `Checking or savings account`
+        }
+      ]
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -39,15 +87,26 @@ export default class ContactFrom extends React.Component {
     this.addFund = this.addFund.bind(this)
     this.removeFund = this.removeFund.bind(this)
     this.handleDonationChanges = this.handleDonationChanges.bind(this)
+    this.handleFormChanges = this.handleFormChanges.bind(this)
+    this.toggleReview = this.toggleReview.bind(this)
   }
 
   handleSubmit (e) {
     e.preventDefault()
 
-    // this.setState({ loading: true })
+    this.setState({ loading: true })
 
-    return console.log(e.target.recurrence_day.value)
+    // return console.log(e.target.recurrence_day.value)
 
+    setTimeout(() => {
+      this.setState({ loading: false })
+    }, 2000)
+  }
+
+  toggleReview () {
+    this.setState({ inReview: !this.state.inReview }, () => {
+      window.scrollTo(0, 0)
+    })
   }
 
   changeMethod (e) {
@@ -69,12 +128,23 @@ export default class ContactFrom extends React.Component {
     this.setState({ donations })
   }
 
+  handleFormChanges (value, key) {
+    const form = {
+      ...this.state.form,
+      [key]: value
+    }
+
+    this.setState({ form })
+  }
+
   addFund (e) {
     const donations = [...this.state.donations]
+    const nextFund = this.state.funds.find(f => !donations.some(d => d.fund_id === f.id))
+
     donations.push({
       key: (new Date()).getMilliseconds(),
       amount: '',
-      fund_id: '',
+      fund_id: nextFund ? nextFund.id : this.state.funds[0].id,
       note: ''
     })
 
@@ -91,10 +161,10 @@ export default class ContactFrom extends React.Component {
   render () {
     return (
       <div style={{ paddingTop: '0' }}>
-        <div className="container">
+        <div className="container relative">
           <form action="/payments" method="post" onSubmit={this.handleSubmit}>
-            <div className="flex flex-wrap -mx-6">
 
+            <div className={`flex flex-wrap -mx-6 ${this.state.inReview ? 'fade-hide' : 'fade-show'}`}>
               <div className="w-full md:w-1/2 px-6">
                 <h3 className="pt-10 md:pt-0">Donation information</h3>
 
@@ -106,7 +176,7 @@ export default class ContactFrom extends React.Component {
                 {this.state.donations.map((donation, index) => (
                   <div className={index > 0 ? `pt-8` : ``} key={donation.key}>
                     <div className="mb-2 flex justify-between items-center">
-                      <label className="block" htmlFor={`amount_${index}`}>Donation amount (USD)</label>
+                      <label htmlFor={`amount_${index}`}>Donation amount (USD)</label>
                       {index > 0 &&
                         <button type="button" className="btn text-xs" onClick={() => this.removeFund(index)}>Remove</button>
                       }
@@ -116,7 +186,7 @@ export default class ContactFrom extends React.Component {
                     </div>
 
                     <div className="mb-2">
-                      <label className="block" htmlFor={`fund_${index}`}>Fund</label>
+                      <label htmlFor={`fund_${index}`}>Fund</label>
                     </div>
                     <div className="mb-10">
                       <select
@@ -130,7 +200,7 @@ export default class ContactFrom extends React.Component {
                     </div>
 
                     <div className="mb-2">
-                      <label className="block" htmlFor={`note_${index}`}>Note</label>
+                      <label htmlFor={`note_${index}`}>Note</label>
                     </div>
                     <div className="mb-8">
                       <input type="text" name="donations[][note]" id={`note_${index}`} value={donation.note} onChange={e => this.handleDonationChanges(e.target.value, index, 'note')} />
@@ -145,45 +215,41 @@ export default class ContactFrom extends React.Component {
                 </div>
 
                 <div className="mb-2">
-                  <label className="block" htmlFor="period">Donation type</label>
+                  <label htmlFor="period">Donation type</label>
                 </div>
                 <div className="mb-10">
                   <select
-                    value={this.state.recurrence}
-                    onChange={this.changeRecurrence}
+                    value={this.state.form.period}
+                    onChange={e => this.handleFormChanges(e.target.value, 'period')}
                     id="period"
                     name="recurrence[period]"
                   >
-                    <option value="once">One-time donation</option>
-                    <option value="1week">Weekly</option>
-                    <option value="2weeks">Bi-weekly</option>
-                    <option value="month">Monthly</option>
-                    <option value="semi">Semi-monthly</option>
+                    {this.state.recurrences.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
                   </select>
                 </div>
 
-                {this.state.recurrence !== 'once' &&
+                {this.state.form.period !== 'once' &&
                   <div className="mb-6">
                     <div className="mb-2">
                       <label>Starting day</label>
                     </div>
 
-                    {this.state.recurrence === '1week' &&
+                    {this.state.form.period === '1week' &&
                       <p className="text-sm">The first date upon which to make this donation. Donations will follow on every single week moving forward.</p>
                     }
 
-                    {this.state.recurrence === '2weeks' &&
+                    {this.state.form.period === '2weeks' &&
                       <p className="text-sm">The first date upon which to make this donation. Donations will follow on every other week moving forward.</p>
                     }
 
-                    {this.state.recurrence === 'month' &&
+                    {this.state.form.period === 'month' &&
                       <>
                       <p className="text-sm mb-2">The first date upon which to make this donation. Donations will follow on every month moving forward on the same day of the month as the start date.</p>
                       <p className="text-sm">In cases where the day of month is greater than the number of days in the actual month, the system will apply the donation on the last day of the month.</p>
                       </>
                     }
 
-                    {this.state.recurrence === 'semi' &&
+                    {this.state.form.period === 'semi' &&
                       <>
                       <p className="text-sm mb-2">The first date upon which to make this donation. Donations will follow on every 1st and 15th moving forward.</p>
                       <p className="text-sm">These always occur on the 1st and 15th, so the actual donations will start on the first of these to occur <strong>after</strong> the start date.</p>
@@ -192,8 +258,8 @@ export default class ContactFrom extends React.Component {
 
                     <div className="text-center md:text-left">
                       <DayPicker
-                        onDayClick={this.handleDayClick}
-                        selectedDays={this.state.selectedDay}
+                        onDayClick={day => this.handleFormChanges(day, 'start')}
+                        selectedDays={this.state.form.start}
                         disabledDays={{ before: new Date() }}
                       />
                       <input type="hidden" id="recurrence_day" name="recurrence[start]" value={this.state.selectedDay} />
@@ -208,40 +274,40 @@ export default class ContactFrom extends React.Component {
                 <p className="error-message">Example error.</p>
 
                 <div className="mb-2">
-                  <label className="block" htmlFor="first_name">First name</label>
+                  <label htmlFor="first_name">First name</label>
                 </div>
                 <div className="mb-6">
-                  <input className="w-full" type="text" name="billing[first_name]" id="first_name" />
+                  <input className="w-full" type="text" value={this.state.form.first_name} onChange={e => this.handleFormChanges(e.target.value, 'first_name')} name="billing[first_name]" id="first_name" />
                 </div>
 
                 <div className="mb-2">
-                  <label className="block" htmlFor="last_name">Last name</label>
+                  <label htmlFor="last_name">Last name</label>
                 </div>
                 <div className="mb-6">
-                  <input className="w-full" type="text" name="billing[last_name]" id="last_name" />
+                  <input className="w-full" type="text" value={this.state.form.last_name} onChange={e => this.handleFormChanges(e.target.value, 'last_name')} name="billing[last_name]" id="last_name" />
                 </div>
 
                 <div className="mb-2">
-                  <label className="block" htmlFor="street_1">Street</label>
+                  <label htmlFor="street_1">Street</label>
                 </div>
                 <div className="mb-6">
-                  <input className="w-full" type="text" name="billing[street_1]" id="street_1" />
+                  <input className="w-full" type="text" value={this.state.form.street_1} onChange={e => this.handleFormChanges(e.target.value, 'street_1')} name="billing[street_1]" id="street_1" />
                 </div>
 
                 <div className="mb-2">
-                  <label className="block" htmlFor="city">City</label>
+                  <label htmlFor="city">City</label>
                 </div>
                 <div className="mb-6">
-                  <input className="w-full" type="text" name="billing[city]" id="city" />
+                  <input className="w-full" type="text" value={this.state.form.city} onChange={e => this.handleFormChanges(e.target.value, 'city')} name="billing[city]" id="city" />
                 </div>
 
                 <div className="flex -mx-4">
                   <div className="w-1/2 px-4">
                     <div className="mb-2">
-                      <label className="block" htmlFor="state">State</label>
+                      <label htmlFor="state">State</label>
                     </div>
                     <div className="mb-6">
-                      <select id="state" name="billing[state]">
+                      <select id="state" value={this.state.form.state} onChange={e => this.handleFormChanges(e.target.value, 'state')} name="billing[state]">
                         <option disabled defaultValue></option>
                         <option value="AL">AL</option>
                         <option value="AK">AK</option>
@@ -301,10 +367,10 @@ export default class ContactFrom extends React.Component {
 
                   <div className="w-1/2 px-4">
                     <div className="mb-2">
-                      <label className="block" htmlFor="postal_code">Postal code</label>
+                      <label htmlFor="postal_code">Postal code</label>
                     </div>
                     <div className="mb-6">
-                      <input className="w-full" type="number" name="billing[postal_code]" id="postal_code" />
+                      <input className="w-full" type="number" value={this.state.form.postal_code} onChange={e => this.handleFormChanges(e.target.value, 'postal_code')} name="billing[postal_code]" id="postal_code" />
                     </div>
                   </div>
                 </div>
@@ -312,37 +378,36 @@ export default class ContactFrom extends React.Component {
                 <h3 className="pt-10">Payment information</h3>
 
                 <div className="mb-2">
-                  <label className="block" htmlFor="payment_method">Payment method</label>
+                  <label htmlFor="payment_method">Payment method</label>
                 </div>
                 <div className="mb-10">
                   <select
-                    value={this.state.method}
-                    onChange={this.changeMethod}
+                    value={this.state.form.payment_method}
+                    onChange={e => this.handleFormChanges(e.target.value, 'payment_method')}
                     id="payment_method"
                     name="payment_method"
                   >
-                    <option value="cc">Credit or debit card</option>
-                    <option value="account">Checking or savings account</option>
+                    {this.state.methods.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
                   </select>
                 </div>
 
-                <div className={this.state.method === 'cc' ? 'block' : 'hidden'}>
+                <div className={this.state.form.payment_method === 'cc' ? 'block' : 'hidden'}>
                   <div className="flex">
                     <div className="flex-1 pr-4">
                       <div className="mb-2">
-                        <label className="block" htmlFor="card_number">Card number</label>
+                        <label htmlFor="card_number">Card number</label>
                       </div>
                       <div className="mb-6">
-                        <input type="number" id="card_number" name="payment_card[card_number]" />
+                        <input type="number" id="card_number" value={this.state.form.card_number} onChange={e => this.handleFormChanges(e.target.value, 'card_number')} name="payment_card[card_number]" />
                       </div>
                     </div>
 
                     <div style={{ width: `60px` }}>
                       <div className="mb-2">
-                        <label className="block" htmlFor="verification_value">CVV</label>
+                        <label htmlFor="verification_value">CVV</label>
                       </div>
                       <div className="mb-6">
-                        <input type="number" id="verification_value" name="payment_card[verification_value]" />
+                        <input type="number" id="verification_value" value={this.state.form.verification_value} onChange={e => this.handleFormChanges(e.target.value, 'verification_value')} name="payment_card[verification_value]" />
                       </div>
                     </div>
                   </div>
@@ -350,10 +415,10 @@ export default class ContactFrom extends React.Component {
                   <div className="flex">
                     <div className="w-1/2 pr-2">
                       <div className="mb-2">
-                        <label className="block" htmlFor="expires_month">Exp. month</label>
+                        <label htmlFor="expires_month">Exp. month</label>
                       </div>
                       <div className="mb-6">
-                        <select id="expires_month" name="payment_card[expires_month]">
+                        <select id="expires_month" value={this.state.form.expires_month} onChange={e => this.handleFormChanges(e.target.value, 'expires_month')} name="payment_card[expires_month]">
                           {this.state.months.map(m => <option key={m} value={m}>{m}</option>)}
                         </select>
                       </div>
@@ -361,10 +426,10 @@ export default class ContactFrom extends React.Component {
 
                     <div className="w-1/2 pl-2">
                       <div className="mb-2">
-                        <label className="block" htmlFor="expires_year">Exp. year</label>
+                        <label htmlFor="expires_year">Exp. year</label>
                       </div>
                       <div className="mb-6">
-                        <select id="expires_year" name="payment_card[expires_year]">
+                        <select id="expires_year" value={this.state.form.expires_year} onChange={e => this.handleFormChanges(e.target.value, 'expires_year')} name="payment_card[expires_year]">
                           {this.state.years.map(y => <option key={y} value={y}>{y}</option>)}
                         </select>
                       </div>
@@ -372,36 +437,120 @@ export default class ContactFrom extends React.Component {
                   </div>
                 </div>
 
-                <div className={this.state.method === 'account' ? 'block' : 'hidden'}>
+                <div className={this.state.form.payment_method === 'account' ? 'block' : 'hidden'}>
                   <div className="mb-2">
-                    <label className="block" htmlFor="account_number">Account number</label>
+                    <label htmlFor="account_number">Account number</label>
                   </div>
                   <div className="mb-6">
-                    <input type="number" id="account_number" name="payment_card[account_number" />
+                    <input type="number" id="account_number" value={this.state.form.account_number} onChange={e => this.handleFormChanges(e.target.value, 'account_number')} name="payment_card[account_number]" />
                   </div>
 
                   <div className="mb-2">
-                    <label className="block" htmlFor="routing_number">Routing number</label>
+                    <label htmlFor="routing_number">Routing number</label>
                   </div>
                   <div className="mb-6">
-                    <input type="number" id="routing_number" name="payment_card[routing_number" />
+                    <input type="number" id="routing_number" value={this.state.form.routing_number} onChange={e => this.handleFormChanges(e.target.value, 'routing_number')} name="payment_card[routing_number]" />
                   </div>
                 </div>
 
                 <div className="py-4 text-right">
-                  <button
-                    className="btn"
-                    disabled={this.state.loading}
-                    type="submit"
-                  >
-                    {this.state.loading ? `Working...` : `Donate`}
-                  </button>
+                  <button className="btn blue" type="button" onClick={this.toggleReview}>Review</button>
                 </div>
 
               </div>
-
             </div>
 
+            <div className={this.state.inReview ? 'fade-show' : 'fade-hide'}>
+              <p className="max-w-md mx-auto text-center">Please review the information below.</p>
+
+              <div className="flex flex-wrap">
+                <div className="w-full md:w-1/2 px-6">
+                  <h3 className="pt-10 md:pt-0">Donation information</h3>
+
+                  <p className="mb-2">I'm making a <strong>{this.state.recurrences.find(r => r.value === this.state.form.period).label.toLowerCase()}</strong>.</p>
+
+                  {this.state.form.period === '1week' &&
+                    <p className="text-sm">The first donation will be made on {this.state.form.start.toLocaleDateString()}. Donations will follow on every single week moving forward.</p>
+                  }
+
+                  {this.state.form.period === '2weeks' &&
+                    <p className="text-sm">The first donation will be made on {this.state.form.start.toLocaleDateString()}. Donations will follow on every other week moving forward.</p>
+                  }
+
+                  {this.state.form.period === 'month' &&
+                    <>
+                    <p className="text-sm mb-2">The first donation will be made on {this.state.form.start.toLocaleDateString()}. Donations will follow on every month moving forward on the same day of the month as the start date.</p>
+                    <p className="text-sm">In cases where the day of month is greater than the number of days in the actual month, the system will apply the donation on the last day of the month.</p>
+                    </>
+                  }
+
+                  {this.state.form.period === 'semi' &&
+                    <>
+                    <p className="text-sm mb-2">The first donation will be made on {this.state.form.start.toLocaleDateString()}. Donations will follow on every 1st and 15th moving forward.</p>
+                    <p className="text-sm">These always occur on the 1st and 15th, so the actual donations will start on the first of these to occur <strong>after</strong> the start date.</p>
+                    </>
+                  }
+
+                  {this.state.donations.map(donation => (
+                    <div className={`border-b border-gray-600`} key={donation.key}>
+                      <div className="py-4 flex flex-wrap justify-between items-center">
+                        <div>
+                          {this.state.funds.find(f => f.id === donation.fund_id).name}
+                        </div>
+                        <div className="text-right">
+                          ${parseFloat(donation.amount).toFixed(2)}
+                        </div>
+                        <div className="w-full text-gray-700">
+                          {donation.note}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  <div className={`border-t border-gray-600`}>
+                    <div className="py-4 flex flex-wrap justify-between items-center font-bold">
+                      <div>
+                        Total
+                      </div>
+                      <div className="text-right">
+                        ${parseFloat(this.state.donations.reduce((total, d) => parseFloat(d.amount) + total, 0)).toFixed(2)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full md:w-1/2 px-6">
+                  <h3 className="pt-10 md:pt-0">Billing information</h3>
+
+                  <div>{this.state.form.first_name} {this.state.form.last_name}</div>
+                  <div>{this.state.form.street_1}</div>
+                  <div>{this.state.form.city}, {this.state.form.state} {this.state.form.postal_code}</div>
+
+                  <h3 className="pt-10">Payment information</h3>
+
+                  <p className="mb-2">I'm paying by <strong>{this.state.methods.find(m => m.value === this.state.form.payment_method).label.toLowerCase()}</strong>.</p>
+
+                  <p className={this.state.form.payment_method === 'cc' ? 'block text-sm' : 'hidden'}>
+                    My card number is <strong>{this.state.form.card_number}</strong> and the CVV is <strong>{this.state.form.verification_value}</strong>. It expires on <strong>{this.state.form.expires_month}/{this.state.form.expires_year}</strong>.
+                  </p>
+
+                  <p className={this.state.form.payment_method === 'account' ? 'block text-sm' : 'hidden'}>
+                    My account number is <strong>{this.state.form.account_number}</strong> with the routing number of <strong>{this.state.form.routing_number}</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-center py-8">
+                <button className="btn mr-6" type="button" onClick={this.toggleReview}>Edit</button>
+                <button
+                  className="btn blue"
+                  type="submit"
+                  disabled={this.state.loading}
+                >
+                  {this.state.loading ? `Working...` : `Donate`}
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
