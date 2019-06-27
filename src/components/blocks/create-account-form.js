@@ -162,7 +162,6 @@ export default class ContactFrom extends React.Component {
                 </div>
               </div>
 
-
               <div className="py-4 text-center">
                 <button
                   className="btn"
