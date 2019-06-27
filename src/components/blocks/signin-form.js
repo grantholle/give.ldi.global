@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 export default class ContactFrom extends React.Component {
   constructor (props) {
@@ -57,10 +58,10 @@ export default class ContactFrom extends React.Component {
                 </button>
 
                 {this.props.data.hideForgot !== true && <div className="text-sm my-4">
-                  <span className="inline-block mr-2 text-gray-700">Forgot password?</span> <a className="text-blue-500 underline" href="/users/password/new">Reset it</a>
+                  <span className="inline-block mr-2 text-gray-700">Forgot password?</span> <Link className="text-blue-500 underline" to="/reset">Reset it</Link>
                 </div>}
                 {this.props.data.hideSignup !== true && <div className="text-sm my-4">
-                  <span className="inline-block mr-2 text-gray-700">No account?</span> <a className="text-blue-500 underline" href="/users/password/new">Sign up</a>
+                  <span className="inline-block mr-2 text-gray-700">No account?</span> <Link className="text-blue-500 underline" to="/signup">Sign up</Link>
                 </div>}
               </div>
             </form>
