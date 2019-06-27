@@ -20,6 +20,7 @@ const SignIn = () => (
         <div className="container max-w-sm mx-auto">
           <ul>
             <li><Link to="/signin">Sign in</Link></li>
+            <li><Link to="/reset">Password reset</Link></li>
             <li><Link to="/signup">Sign up</Link></li>
             <li><Link to="/donate">Donate</Link></li>
           </ul>

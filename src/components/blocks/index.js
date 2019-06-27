@@ -14,6 +14,7 @@ import Accordion from "./accordion"
 import SignIn from "./signin-form"
 import CreateAccount from "./create-account-form"
 import Donate from "./donate-form"
+import Reset from "./reset-form"
 
 const blocks = {
   hero: Hero,
@@ -31,6 +32,7 @@ const blocks = {
   signin: SignIn,
   create_account: CreateAccount,
   donate: Donate,
+  reset: Reset,
 }
 
 const Blocks = ({ content }) => {
