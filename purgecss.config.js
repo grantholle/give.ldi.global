@@ -41,5 +41,6 @@ module.exports = {
   whitelistPatterns: [
     /body/,
     /block-accordion/,
+    /DayPicker/,
   ], // adjust for each project
 }
