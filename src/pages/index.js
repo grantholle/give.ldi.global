@@ -21,6 +21,7 @@ const SignIn = () => (
           <ul>
             <li><Link to="/signin">Sign in</Link></li>
             <li><Link to="/reset">Password reset</Link></li>
+            <li><Link to="/reset-success">Password reset success</Link></li>
             <li><Link to="/signup">Sign up</Link></li>
             <li><Link to="/signup-success">Sign up success</Link></li>
             <li><Link to="/donate">Donate</Link></li>
