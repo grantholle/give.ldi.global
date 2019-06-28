@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/blocks/hero"
-import Cta from "../components/blocks/cta"
 
 const NotFoundPage = () => (
   <Layout whiteNav={true}>
